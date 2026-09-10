@@ -125,6 +125,35 @@ def create_document():
         r_text.font.color.rgb = COLOR_TEXT
         doc.add_paragraph()
 
+    def add_screenshot_picture(filename, caption):
+        doc_path = os.path.join("c:\\Users\\sreed\\Downloads\\FUVT\\docs\\screenshots", filename)
+        art_path = os.path.join("C:\\Users\\sreed\\.gemini\\antigravity-ide\\brain\\6bd3655f-85ce-4edd-bbc8-323c0d35ef0e", filename)
+        
+        target_path = None
+        if os.path.exists(doc_path):
+            target_path = doc_path
+        elif os.path.exists(art_path):
+            target_path = art_path
+            
+        if target_path:
+            p = doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_before = Pt(12)
+            p.paragraph_format.space_after = Pt(4)
+            run = p.add_run()
+            run.add_picture(target_path, width=Inches(6.2))
+            
+            p_cap = doc.add_paragraph()
+            p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p_cap.paragraph_format.space_after = Pt(16)
+            r_cap = p_cap.add_run(f"📸 {caption}")
+            r_cap.font.name = 'Calibri'
+            r_cap.font.italic = True
+            r_cap.font.bold = True
+            r_cap.font.size = Pt(9.5)
+            r_cap.font.color.rgb = COLOR_SECONDARY
+
+
     def set_cell_background(cell, fill_hex):
         shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{fill_hex}"/>')
         cell._tc.get_or_add_tcPr().append(shd)
@@ -368,7 +397,7 @@ def create_document():
                 cells[j].paragraphs[0].runs[0].font.bold = True
                 cells[j].paragraphs[0].runs[0].font.color.rgb = RGBColor(16, 185, 129)
 
-    add_h2("6. Page-by-Page Documentation")
+    add_h2("6. Page-by-Page Module Documentation with Screenshot Evidence")
 
     # 6.1 Dashboard Page
     add_h3("6.1 Home Page / Dashboard Console (/)")
@@ -376,6 +405,7 @@ def create_document():
     doc.add_paragraph("• Purpose: Serves as the central security management hub, displaying aggregate metrics, risk charts, scan trends, and recent scan logs.")
     doc.add_paragraph("• Visible Elements: Welcome Banner with launch action button, 4 primary Metric Cards (Total Scans, Files Analyzed, Vulnerabilities Found, Critical Findings), 4 Secondary Risk Breakdown Cards (Critical, High, Medium, Low), Scan Trends Chart, Severity Breakdown Donut Chart, and Recent Scans Table with quick actions.")
     doc.add_paragraph("• User Interaction: Clicking 'Launch File Analyzer' navigates to /analyzer. Clicking any recent scan row navigates directly to /results/[id]. Clicking delete removes the scan from LocalStorage.")
+    add_screenshot_picture("page_01_dashboard.png", "Module 1: Home Page & Executive Security KPI Dashboard Console (/)")
 
     # 6.2 Demo Testing Page
     add_h3("6.2 Demo Testing Laboratory (/demo)")
@@ -391,13 +421,15 @@ def create_document():
                       "  7. Clean Financial Audit Report (Q3_Financial_Audit_Report.pdf) - Safe / No Harm\n"
                       "  8. Clean EXIF Photo JPEG (profile_avatar_hd.jpg) - Safe / No Harm")
     doc.add_paragraph("• User Interaction: Clicking 'Run Multi-Site Scan' on any card initializes binary memory buffers, computes cryptographic hashes, evaluates 72 vendor engines and 8 security platforms, generates a System Harm Assessment, saves the scan result, and navigates to the detailed report.")
+    add_screenshot_picture("page_03_demo_lab.png", "Module 2: Interactive Security Demo Testing Laboratory (/demo)")
 
     # 6.3 File Analyzer Page
-    add_h3("6.3 File Analyzer Page (/analyzer)")
+    add_h3("6.3 File Security Analyzer Page (/analyzer)")
     doc.add_paragraph("• Route / URL: /analyzer")
     doc.add_paragraph("• Purpose: Primary manual upload portal for inspecting custom user files.")
     doc.add_paragraph("• Visible Elements: Interactive Drag & Drop zone with file type badges, Upload Policy Summary card displaying active file size boundaries (e.g. 10MB limit), and File Preview component displaying filename, size, MIME type, and 'Start Security Scan' button.")
     doc.add_paragraph("• User Interaction: Dragging a file or clicking the dropzone opens native OS file selector. Clicking 'Start Security Scan' executes runSecurityAnalysis() and redirects to /results/[id].")
+    add_screenshot_picture("page_02_analyzer.png", "Module 3: Interactive Drag & Drop File Security Analyzer (/analyzer)")
 
     # 6.4 Scan Results Page
     add_h3("6.4 Scan Results Inventory Page (/results)")
@@ -405,6 +437,7 @@ def create_document():
     doc.add_paragraph("• Purpose: Master audit log table containing all past security inspections.")
     doc.add_paragraph("• Visible Elements: Search input box, Verdict Filter tabs (All, Critical, Suspicious, Warning, Clean), Master Audit Table displaying Scan ID, Filename, Size, Format, Status Badge, Score, Date, and Actions (View Detailed Report, Delete Scan).")
     doc.add_paragraph("• User Interaction: Typing in search input filters by filename or scan ID. Clicking status pills filters by security verdict. Clicking 'Export Audit Log' downloads full JSON data.")
+    add_screenshot_picture("page_04_results_list.png", "Module 4: Master Scan Audit Results Inventory (/results)")
 
     # 6.5 Detailed Scan Report Page
     add_h3("6.5 Detailed Scan Report Page (/results/[id])")
@@ -415,11 +448,9 @@ def create_document():
                       "  2. System & Device Harm Card: Harm Level Badge (CRITICAL DEVICE DAMAGE / SAFE), overall summary paragraph, 4-vector damage grid (OS File System, Registry, Network Exfiltration, Process Injection), and Impact Vector Tags.\n"
                       "  3. VirusTotal Overview Banner: Large Donut Gauge displaying vendor detection ratio (e.g. 58/72), Analysis Priority badge (P1-CRITICAL), Cryptographic Hashes bar (SHA-256, MD5) with copy buttons, format, and entropy score.\n"
                       "  4. Navigation Tabs: 72 Security Vendors, Multi-Platform Virus Reports (8 Sites), File Output & Preview, Static Security Checks, Remediation Guides, and Binary Magic Bytes Hex Viewer.")
-    doc.add_paragraph("• Sub-Tabs:\n"
-                      "  • 72 Security Vendors Tab: Searchable grid of antimalware vendors (Kaspersky, Microsoft, CrowdStrike, Sophos, etc.) with detected threat strings.\n"
-                      "  • Multi-Platform Virus Reports Tab: Grid of 8 threat intelligence sites (VirusTotal, Hybrid Analysis, ANY.RUN, MalwareBazaar, JOE Sandbox, CIRCL, Cisco Talos, MetaDefender) with scores and live links.\n"
-                      "  • File Output Viewer Tab: Text/Code output viewer with line numbers and threat highlight tags, graphic previewer for images, and extracted IoC table.\n"
-                      "  • Static Checks Tab: Detailed check cards with pass/warning/fail badges, evidence, remediation, and CWE links.")
+    add_screenshot_picture("page_05_report_vendors.png", "Module 5A: Detailed VirusTotal Scan Report & 72 Security Vendors Grid (/results/[id])")
+    add_screenshot_picture("page_06_report_threat_intel.png", "Module 5B: Multi-Platform Threat Intelligence Reports (8 Security Portals)")
+    add_screenshot_picture("page_07_report_remediation.png", "Module 5C: Interactive CWE Vulnerability Remediation Guides")
 
     # 6.6 Vulnerability Findings Page
     add_h3("6.6 Vulnerability Findings Inventory Page (/findings)")
@@ -427,6 +458,7 @@ def create_document():
     doc.add_paragraph("• Purpose: Dedicated vulnerability management interface for tracking and resolving failed security checks across all scans.")
     doc.add_paragraph("• Visible Elements: Search bar, Severity filter tabs (All, Critical, High, Medium, Low), Category filter, Status filter (Open, In Review, Resolved, Muted), Findings Grid displaying CWE ID, test name, filename, severity badge, and 'Investigate & Remediate' button.")
     doc.add_paragraph("• User Interaction: Clicking 'Investigate & Remediate' opens a dialog displaying detailed evidence, vulnerability description, remediation guidelines, and status selector (OPEN, IN_REVIEW, RESOLVED, MUTED).")
+    add_screenshot_picture("page_08_findings.png", "Module 6: Master Security Findings Database & CWE Tracker (/findings)")
 
     # 6.7 Settings Page
     add_h3("6.7 Security Policy & Settings Page (/settings)")
@@ -434,8 +466,10 @@ def create_document():
     doc.add_paragraph("• Purpose: Configuration panel for customizing upload boundaries, static check toggles, and VirusTotal API key integration.")
     doc.add_paragraph("• Visible Elements: Upload Limits card (Max File Size MB input, Allowed Extensions whitelist), VirusTotal v3 Threat Intelligence API card (API Key password input field), Active Static Security Rules card (9 toggle switches for Dangerous Ext, Double Ext, MIME Mismatch, Magic Bytes, Null Byte, Traversal, Unicode, SVG XSS, Strict Mode), and Reset Mock Data button.")
     doc.add_paragraph("• User Interaction: Modifying input fields or toggles and clicking 'Save Policies' updates LocalStorage configuration applied to all future scans.")
+    add_screenshot_picture("page_09_settings.png", "Module 7: Security Policy & VirusTotal API Configuration (/settings)")
 
     doc.add_page_break()
+
 
     # -------------------------------------------------------------
     # PART 5: WEBSITE NAVIGATION
@@ -691,14 +725,35 @@ def create_document():
     doc.add_paragraph("• Node.js Runtime Requirement: Node.js v18.0.0 or higher")
 
     add_h1("PART 15 — SCREENSHOT EVIDENCE & AUDIT TRAIL")
-    doc.add_paragraph("• Figure 1: Master System Architecture Diagram of FILEGUARD Security Tester")
-    doc.add_paragraph("• Figure 2: Homepage & KPI Dashboard Console (/) - Displays 4 KPI metrics, scan trends chart, severity donut chart, and recent scans table.")
-    doc.add_paragraph("• Figure 3: Interactive Security Demo Laboratory (/demo) - Displays 8 sample test cards with 1-click execution and live progress modal.")
-    doc.add_paragraph("• Figure 4: Live File Analyzer (/analyzer) - Displays Drag & Drop dropzone and active policy upload thresholds.")
-    doc.add_paragraph("• Figure 5: Master Scan Results Inventory (/results) - Searchable audit table with verdict filters.")
-    doc.add_paragraph("• Figure 6: Detailed VirusTotal Scan Report & System Harm Card (/results/[id]) - Displays 68/72 Donut Gauge, System Harm Risk Card, 72 Vendors Grid, 8 Multi-Site Reports, and File Output Viewer.")
-    doc.add_paragraph("• Figure 7: Vulnerability Findings & CWE Remediation Dialog (/findings) - Table of CWE findings with status dropdown.")
-    doc.add_paragraph("• Figure 8: Security Policy Settings (/settings) - Rule toggles and VirusTotal API key input.")
+    doc.add_paragraph("The following high-resolution screenshot audit trail captures all operational modules of the FILEGUARD Security Tester platform in high-definition production mode:")
+
+    doc.add_paragraph("1. Executive Overview Dashboard (/) — Displays 4 KPI metrics, severity breakdown, scan trends chart, and recent audit log table.")
+    add_screenshot_picture("page_01_dashboard.png", "Figure 1: Home Page & Executive Security KPI Dashboard Console (/)")
+
+    doc.add_paragraph("2. Interactive Demo Testing Laboratory (/demo) — Pre-configured 8-sample file laboratory with 1-click scan execution triggers.")
+    add_screenshot_picture("page_03_demo_lab.png", "Figure 2: Interactive Security Demo Testing Laboratory (/demo)")
+
+    doc.add_paragraph("3. File Security Analyzer (/analyzer) — Manual drag-and-drop file inspection target with animated scanline and radar target sweep.")
+    add_screenshot_picture("page_02_analyzer.png", "Figure 3: Interactive Drag & Drop File Security Analyzer (/analyzer)")
+
+    doc.add_paragraph("4. Master Scan Audit Inventory (/results) — Historical scan log database with instant search and verdict filtering.")
+    add_screenshot_picture("page_04_results_list.png", "Figure 4: Master Scan Audit Results Inventory (/results)")
+
+    doc.add_paragraph("5. Detailed VirusTotal Scan Report & 72 Security Vendors Grid (/results/[id]) — 72-vendor engine breakdown and detection gauge.")
+    add_screenshot_picture("page_05_report_vendors.png", "Figure 5: Detailed VirusTotal Scan Report & 72 Security Vendor Grid (/results/[id])")
+
+    doc.add_paragraph("6. Multi-Platform Threat Intelligence Reports — Verdicts across 8 security platforms (VirusTotal, Hybrid, ANY.RUN, MalwareBazaar, JOE Sandbox, CIRCL, Talos, MetaDefender).")
+    add_screenshot_picture("page_06_report_threat_intel.png", "Figure 6: Multi-Platform Threat Intelligence Reports (8 Security Portals)")
+
+    doc.add_paragraph("7. Interactive CWE Vulnerability Remediation Guides — Code fix snippets for Node.js, Python, Java, and PHP.")
+    add_screenshot_picture("page_07_report_remediation.png", "Figure 7: Interactive CWE Vulnerability Remediation Guides")
+
+    doc.add_paragraph("8. Master Security Findings Database (/findings) — Centralized CWE vulnerability tracker with status lifecycle dropdowns.")
+    add_screenshot_picture("page_08_findings.png", "Figure 8: Master Security Findings Database & CWE Tracker (/findings)")
+
+    doc.add_paragraph("9. Security Policy & Settings (/settings) — Static check rule toggles, file size thresholds, and VirusTotal API key configuration.")
+    add_screenshot_picture("page_09_settings.png", "Figure 9: Security Policy & VirusTotal API Configuration (/settings)")
+
 
     add_h1("PART 16 — OVERALL TESTING RESULTS SUMMARY")
     res_table = doc.add_table(rows=6, cols=6)
