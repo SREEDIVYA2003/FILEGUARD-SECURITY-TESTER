@@ -19,6 +19,71 @@ By combining real Web Crypto cryptographic hashing, binary Shannon entropy calcu
 
 ---
 
+## 📸 Visual Showcase & Application Screenshots
+
+### 1. Executive Overview Dashboard (`/`)
+*Real-time executive security metric cards, CSS SVG threat distribution breakdown chart, and recent audit table with quick HTML Report export buttons.*
+
+![Executive Overview Dashboard](./docs/screenshots/page_01_dashboard.png)
+
+---
+
+### 2. Interactive File Security Analyzer (`/analyzer`)
+*Drag-and-drop file upload target area supporting single or multi-file uploads with animated static check execution progress.*
+
+![File Security Analyzer](./docs/screenshots/page_02_analyzer.png)
+
+---
+
+### 3. Interactive Demo Laboratory (`/demo`)
+*8 pre-configured malware and clean file samples (PHP Webshell, WannaCry Ransomware, SVG XSS Exploit, EICAR Benchmark, Clean PDF, Clean JPG, Clean DOCX, Clean CSV).*
+
+![Demo Laboratory](./docs/screenshots/page_03_demo_lab.png)
+
+---
+
+### 4. Detailed VirusTotal Scan Report — 72 Security Vendors (`/results/[id]`)
+*Circular verdict gauge, System & Device Harm Card, cryptographic hashes (SHA-256, MD5, SHA-1), top export bar (Download HTML Report, Export JSON Report, Download Analyzed File), and 72 antimalware vendor engine grid.*
+
+![Detailed VirusTotal Report - 72 Security Engine Vendors](./docs/screenshots/page_05_report_vendors.png)
+
+---
+
+### 5. Multi-Platform Threat Intelligence Reports (`/results/[id]` - Intel Tab)
+*Verdicts, risk scores, and threat classifications across 8 security sandboxes (VirusTotal, Hybrid Analysis, Abuse.ch MalwareBazaar, ANY.RUN, JOE Sandbox, CIRCL, Cisco Talos, MetaDefender).*
+
+![Multi-Platform Threat Intelligence Reports](./docs/screenshots/page_06_report_threat_intel.png)
+
+---
+
+### 6. Interactive CWE Remediation Guides (`/results/[id]` - Remediation Tab)
+*Vulnerability CWE selector (CWE-434, CWE-430, CWE-22, CWE-79) and language fix code snippets for Node.js / Express, Python / Flask, Java / Spring, and PHP.*
+
+![Interactive CWE Remediation Guides](./docs/screenshots/page_07_report_remediation.png)
+
+---
+
+### 7. Scan Audit Results List (`/results`)
+*Historical audit table of all analyzed file scans with verdict badges and direct HTML Report download actions.*
+
+![Scan Audit Results List](./docs/screenshots/page_04_results_list.png)
+
+---
+
+### 8. Vulnerability Findings Management (`/findings`)
+*Centralized vulnerability tracking with status filters and interactive status update dropdowns (OPEN, IN_REVIEW, RESOLVED, FALSE_POSITIVE).*
+
+![Vulnerability Findings Management](./docs/screenshots/page_08_findings.png)
+
+---
+
+### 9. Security Policy Settings (`/settings`)
+*Security policy configuration form with static check toggle switches, allowed extensions input, and max file size limits.*
+
+![Security Policy Settings](./docs/screenshots/page_09_settings.png)
+
+---
+
 ## 🔥 Key Features & Capabilities
 
 ### ⚡ Real Cryptographic Hashing
@@ -56,17 +121,6 @@ By combining real Web Crypto cryptographic hashing, binary Shannon entropy calcu
   - **Network Exfiltration**: Flags socket connections to C2 / TOR endpoints.
   - **Process Injection**: Intercepts background shell command spawning (`svchost.exe`, `vssadmin`).
 
-### 🧪 Interactive Demo Laboratory
-- Features 8 pre-configured sample files (4 malware payloads and 4 clean documents) for instant testing:
-  - `user_profile_avatar.png.php` (PHP Webshell Polyglot)
-  - `WannaCry_Ransomware_Payload.exe` (High-Entropy Ransomware)
-  - `company_banner_icon.svg` (SVG XSS Script Payload)
-  - `eicar_antivirus_test.com` (EICAR Benchmark)
-  - `Q3_Financial_Statement.pdf` (Clean PDF Document)
-  - `corporate_headshot.jpg` (Clean JPEG Image)
-  - `project_proposal.docx` (Clean Word Document)
-  - `employee_roster.csv` (Clean CSV Data)
-
 ### 💻 Interactive CWE Remediation Guides
 - Provides code fixes for key vulnerability types:
   - **CWE-434**: Unrestricted File Upload
@@ -101,6 +155,8 @@ FILEGUARD-SECURITY-TESTER/
 │   ├── findings/                   # Findings management table
 │   ├── layout/                     # Sidebar navigation & header clock
 │   └── ui/                         # Cyber buttons, badges, tabs, cards, toast
+├── docs/
+│   └── screenshots/                # 9 high-res application screenshot images
 ├── lib/
 │   ├── security-analyzer.ts        # Primary security evaluation engine
 │   ├── virustotal-service.ts       # 72 security engine vendor evaluation logic
