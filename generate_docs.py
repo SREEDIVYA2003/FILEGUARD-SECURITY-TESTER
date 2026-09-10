@@ -146,20 +146,22 @@ def create_document():
     add_subtitle("Comprehensive Technical Project Documentation & System Architecture Report")
 
     # Meta Table on Cover Page
-    meta_table = doc.add_table(rows=10, cols=2)
-    meta_table.alignment = WD_TABLE_ALIGNMENT.CENTER
     meta_data = [
         ("Project Name", "FILEGUARD Security Tester"),
-        ("Live Web URL", "http://localhost:3000 / http://localhost:3002"),
-        ("Source Code Repository", "c:\\Users\\sreed\\Downloads\\FUVT"),
+        ("Live Web Production URL", "https://fileguard-security-tester.vercel.app/"),
+        ("GitHub Repository URL", "https://github.com/SREEDIVYA2003/FILEGUARD-SECURITY-TESTER"),
         ("Project Type", "Web Application / Cybersecurity File Inspector & Threat Intelligence Platform"),
         ("Developer / Author", "Engineering Development Team"),
         ("Organization / University", "Department of Cybersecurity & Software Engineering"),
         ("Technology Stack", "Next.js 14, React 18, TypeScript 5.6, TailwindCSS, Web Crypto API"),
-        ("Analysis Engines", "VirusTotal v3, Shannon Entropy, IoC Extractor, 72-Vendor Scanner"),
-        ("Document Version", "v2.5 (Production Release)"),
+        ("Analysis Engines", "VirusTotal 72-Vendor Scanner, 8 Threat Sites, Shannon Entropy, IoC Extractor"),
+        ("UI Special Features", "Animated Custom Cyber Cursor, Matrix Background Glows & Glassmorphism"),
+        ("Document Version", "v3.0 (Vercel & GitHub Production Release)"),
         ("Documentation Date", "September 10, 2026")
     ]
+
+    meta_table = doc.add_table(rows=len(meta_data), cols=2)
+    meta_table.alignment = WD_TABLE_ALIGNMENT.CENTER
 
     for i, (k, v) in enumerate(meta_data):
         row = meta_table.rows[i]
