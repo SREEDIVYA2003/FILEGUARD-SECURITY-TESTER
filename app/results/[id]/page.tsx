@@ -152,24 +152,25 @@ export default function DetailedScanResultPage() {
   const virusCategory = scan.virusCategory || "Clean File";
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="theme-report min-h-screen -m-6 p-6 md:p-8 space-y-8 animate-in fade-in duration-500">
       {/* Top Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-500/20 pb-4">
         <div className="flex items-center gap-3">
           <Link href="/results">
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" className="hover:border-purple-500/50 hover:text-purple-300">
               <ArrowLeft className="w-4 h-4" />
             </Button>
           </Link>
           <div>
             <h1 className="text-xl font-extrabold text-white font-mono flex items-center gap-2">
-              <FileCode className="w-5 h-5 text-cyan-400" /> {scan.filename}
+              <FileCode className="w-5 h-5 text-purple-400" /> {scan.filename}
             </h1>
             <p className="text-xs text-slate-400 font-mono">
               VirusTotal Scan ID: {scan.id} • {formatDate(scan.uploadedAt)}
             </p>
           </div>
         </div>
+
 
         <div className="flex flex-wrap items-center gap-2">
           <Button variant="cyber" size="sm" onClick={handleExportHTML} className="gap-1.5 font-mono text-xs shadow-md">

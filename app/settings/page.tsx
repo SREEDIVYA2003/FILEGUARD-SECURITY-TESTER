@@ -39,16 +39,18 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500 max-w-4xl mx-auto">
+    <div className="theme-settings min-h-screen -m-6 p-6 md:p-8 space-y-8 animate-in fade-in duration-500 max-w-5xl mx-auto">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-extrabold text-white flex items-center gap-2">
-            <Settings className="w-6 h-6 text-cyan-400" /> Security Policy & Ruleset Config
+            <Settings className="w-6 h-6 text-cyan-400 animate-spin" style={{ animationDuration: '10s' }} />
+            <span>Security Policy & Ruleset Config</span>
           </h1>
-          <p className="text-xs text-slate-400 font-mono">
+          <p className="text-xs text-slate-300 font-mono">
             Customize static check thresholds, ruleset strictness, and local sandbox preferences.
           </p>
         </div>
+
 
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={handleResetData} className="gap-1.5 text-xs font-mono">

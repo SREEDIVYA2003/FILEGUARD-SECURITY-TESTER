@@ -46,12 +46,18 @@ export function FileDropzone({ onFileSelect, disabled = false }: FileDropzonePro
       onDrop={handleDrop}
       onClick={() => !disabled && inputRef.current?.click()}
       className={cn(
-        "relative cursor-pointer rounded-2xl border-2 border-dashed p-10 text-center transition-all duration-300 backdrop-blur-md group",
+        "relative overflow-hidden cursor-pointer rounded-2xl border-2 border-dashed p-10 text-center transition-all duration-300 backdrop-blur-md group",
         isDragOver
-          ? "border-cyan-400 bg-cyan-500/10 shadow-[0_0_30px_rgba(0,242,254,0.25)] scale-[1.01]"
-          : "border-slate-800 bg-slate-950/70 hover:border-cyan-500/40 hover:bg-slate-900/60"
+          ? "border-cyan-400 bg-cyan-500/15 shadow-[0_0_40px_rgba(0,242,254,0.3)] scale-[1.01]"
+          : "border-cyan-500/30 bg-slate-950/80 hover:border-cyan-400 hover:bg-slate-900/70 shadow-[0_0_20px_rgba(6,182,212,0.1)]"
       )}
     >
+      {/* Animated Radar Sweep Radar Layer */}
+      <div className="radar-sweep opacity-30 group-hover:opacity-60 transition-opacity" />
+
+      {/* Animated Top-to-Bottom Scanning Line */}
+      <div className="scanline-animated" />
+
       <input
         ref={inputRef}
         type="file"
@@ -60,27 +66,28 @@ export function FileDropzone({ onFileSelect, disabled = false }: FileDropzonePro
         className="hidden"
       />
 
-      <div className="flex flex-col items-center justify-center space-y-4">
+      <div className="relative z-10 flex flex-col items-center justify-center space-y-4">
         {/* Animated Cyber Ring Icon */}
-        <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-slate-900 border border-cyan-500/30 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(0,242,254,0.3)] transition-all">
-          <UploadCloud className="w-8 h-8 text-cyan-400 group-hover:scale-110 transition-transform" />
-          <span className="absolute inset-0 rounded-full border border-cyan-400/20 animate-ping opacity-30" />
+        <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-slate-900/90 border border-cyan-400/50 group-hover:border-cyan-300 group-hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] transition-all">
+          <UploadCloud className="w-10 h-10 text-cyan-400 group-hover:scale-110 transition-transform animate-pulse" />
+          <span className="absolute inset-0 rounded-full border border-cyan-400/40 animate-ping opacity-40" />
         </div>
 
         <div className="space-y-1">
-          <h3 className="text-base font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
-            Drag & Drop file to analyze or <span className="text-cyan-400 underline decoration-cyan-500/40 underline-offset-4">Browse Local Storage</span>
+          <h3 className="text-lg font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
+            Drag & Drop file to inspect or <span className="text-cyan-400 underline decoration-cyan-500/50 underline-offset-4">Browse Local Storage</span>
           </h3>
-          <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+          <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed font-sans">
             Supports PNG, JPEG, PDF, SVG, DOCX, ZIP, EXE, PHP, Script files for safe static inspection.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800">
-          <AlertCircle className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Non-destructive Client Sandbox Inspection</span>
+        <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-slate-900/90 px-4 py-1.5 rounded-full border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+          <AlertCircle className="w-4 h-4 text-cyan-400" />
+          <span>Non-destructive Client Sandbox Inspection Active</span>
         </div>
       </div>
     </div>
   );
+
 }

@@ -3,11 +3,16 @@
 > **Automated Client-Side File Security Inspection & Threat Intelligence Platform**  
 > *Inspired by VirusTotal — Real Cryptographic Hashing, Binary Shannon Entropy, 72 Antimalware Vendor Engines, Multi-Platform Threat Reports, and System Harm Assessment.*
 
+🌐 **Live Web Application**: [https://fileguard-security-tester.vercel.app/](https://fileguard-security-tester.vercel.app/)  
+📦 **GitHub Repository**: [https://github.com/SREEDIVYA2003/FILEGUARD-SECURITY-TESTER](https://github.com/SREEDIVYA2003/FILEGUARD-SECURITY-TESTER)
+
 ![Next.js](https://img.shields.io/badge/Next.js-14.2.15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4.14-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)
+
 
 ---
 

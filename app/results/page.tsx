@@ -22,27 +22,29 @@ export default function ResultsListPage() {
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
+    <div className="theme-results min-h-screen -m-6 p-6 md:p-8 space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-extrabold text-white flex items-center gap-2">
-            <FileText className="w-6 h-6 text-cyan-400" /> Scan Audit Results
+            <FileText className="w-6 h-6 text-sky-400 animate-pulse" />
+            <span>Scan Audit Results</span>
           </h1>
-          <p className="text-xs text-slate-400 font-mono">
+          <p className="text-xs text-slate-300 font-mono">
             Historical security audit reports for analyzed local files.
           </p>
         </div>
 
         <Link href="/analyzer">
-          <Button variant="cyber" size="sm">
+          <Button variant="cyber" size="sm" className="shadow-[0_0_15px_rgba(56,189,248,0.3)]">
             <Plus className="w-4 h-4 mr-1" /> New Analysis
           </Button>
         </Link>
       </div>
 
-      <Card className="p-6">
+      <Card className="p-6 border-slate-800/80 bg-slate-950/80 backdrop-blur-xl shadow-2xl">
         <RecentScans scans={scans} onDeleteScan={handleDelete} />
       </Card>
     </div>
   );
+
 }

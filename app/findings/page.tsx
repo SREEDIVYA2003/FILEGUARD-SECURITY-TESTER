@@ -40,12 +40,13 @@ export default function FindingsPage() {
   });
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
+    <div className="theme-findings min-h-screen -m-6 p-6 md:p-8 space-y-6 animate-in fade-in duration-500">
       <div>
         <h1 className="text-2xl font-extrabold text-white flex items-center gap-2">
-          <AlertTriangle className="w-6 h-6 text-rose-400" /> Master Security Findings Database
+          <AlertTriangle className="w-6 h-6 text-amber-400 animate-pulse" />
+          <span>Master Security Findings Database</span>
         </h1>
-        <p className="text-xs text-slate-400 font-mono">
+        <p className="text-xs text-slate-300 font-mono">
           Centralized inventory of all vulnerability findings detected across file scans.
         </p>
       </div>
@@ -63,10 +64,10 @@ export default function FindingsPage() {
       {/* Findings List */}
       <div className="space-y-3">
         {filteredFindings.length === 0 ? (
-          <div className="p-12 text-center border border-slate-800 rounded-xl bg-slate-950/40 space-y-3">
+          <div className="p-12 text-center border border-amber-500/20 rounded-xl bg-amber-950/10 space-y-3 shadow-lg">
             <ShieldCheck className="w-10 h-10 text-emerald-400 mx-auto" />
-            <h4 className="text-sm font-semibold text-slate-300">No Findings Match Your Filters</h4>
-            <p className="text-xs text-slate-500">Try clearing or broadening your search parameters.</p>
+            <h4 className="text-sm font-semibold text-slate-200">No Findings Match Your Filters</h4>
+            <p className="text-xs text-slate-400 font-sans">Try clearing or broadening your search parameters.</p>
           </div>
         ) : (
           filteredFindings.map((finding) => (
@@ -87,4 +88,5 @@ export default function FindingsPage() {
       />
     </div>
   );
+
 }

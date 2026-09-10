@@ -223,16 +223,18 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500 font-mono">
+    <div className="theme-demo min-h-screen -m-6 p-6 md:p-8 space-y-8 animate-in fade-in duration-500 font-mono">
       {/* Header Banner */}
-      <div className="relative rounded-2xl p-6 md:p-8 bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/60 border border-cyan-500/30 shadow-2xl overflow-hidden">
+      <div className="relative rounded-2xl p-6 md:p-8 bg-gradient-to-r from-slate-950 via-slate-900/90 to-emerald-950/40 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.1)] overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
               <FlaskConical className="w-3.5 h-3.5" /> Multi-Website Security & Harm Testing Lab
             </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
-              Interactive Virus & System Harm Laboratory
+            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2">
+              <FlaskConical className="w-7 h-7 text-emerald-400 animate-pulse" />
+              <span>Interactive Virus & System Harm Laboratory</span>
             </h1>
             <p className="text-xs md:text-sm text-slate-300 font-sans leading-relaxed">
               Run 1-click deep security analysis over malicious & clean sample files. Evaluates threat scores across 8 security platforms (VirusTotal, Hybrid Analysis, ANY.RUN, MalwareBazaar) and assesses exact System/Device Harm risks.
@@ -240,6 +242,7 @@ export default function DemoPage() {
           </div>
         </div>
       </div>
+
 
       {/* Live Scanning Progress Overlay */}
       {analyzingId && (

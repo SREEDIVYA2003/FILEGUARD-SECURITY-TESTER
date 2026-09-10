@@ -88,6 +88,37 @@ export function Sidebar() {
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
           const Icon = item.icon;
+
+          // Theme color mapping per route
+          const themeStyleMap: Record<string, { active: string; icon: string }> = {
+            "/": {
+              active: "bg-gradient-to-r from-rose-500/20 via-cyan-500/10 to-transparent text-cyan-300 border-l-2 border-cyan-400 font-semibold shadow-[0_0_15px_rgba(0,242,254,0.15)]",
+              icon: "text-cyan-400"
+            },
+            "/demo": {
+              active: "bg-gradient-to-r from-emerald-500/20 to-transparent text-emerald-300 border-l-2 border-emerald-400 font-semibold shadow-[0_0_15px_rgba(16,185,129,0.15)]",
+              icon: "text-emerald-400"
+            },
+            "/analyzer": {
+              active: "bg-gradient-to-r from-cyan-500/20 to-transparent text-cyan-300 border-l-2 border-cyan-400 font-semibold shadow-[0_0_15px_rgba(6,182,212,0.15)]",
+              icon: "text-cyan-400"
+            },
+            "/results": {
+              active: "bg-gradient-to-r from-sky-500/20 to-transparent text-sky-300 border-l-2 border-sky-400 font-semibold shadow-[0_0_15px_rgba(56,189,248,0.15)]",
+              icon: "text-sky-400"
+            },
+            "/findings": {
+              active: "bg-gradient-to-r from-amber-500/20 to-transparent text-amber-300 border-l-2 border-amber-400 font-semibold shadow-[0_0_15px_rgba(245,158,11,0.15)]",
+              icon: "text-amber-400"
+            },
+            "/settings": {
+              active: "bg-gradient-to-r from-slate-700/40 to-transparent text-slate-200 border-l-2 border-cyan-400 font-semibold",
+              icon: "text-cyan-400"
+            }
+          };
+
+          const theme = themeStyleMap[item.href] || { active: "bg-cyan-500/20 text-cyan-300 border-l-2 border-cyan-400", icon: "text-cyan-400" };
+
           return (
             <Link
               key={item.href}
@@ -95,12 +126,12 @@ export function Sidebar() {
               className={cn(
                 "group relative flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
                 isActive
-                  ? "bg-gradient-to-r from-cyan-500/20 to-transparent text-cyan-300 border-l-2 border-cyan-400 font-semibold"
+                  ? theme.active
                   : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
               )}
             >
               <div className="flex items-center gap-3">
-                <Icon className={cn("w-4 h-4 transition-colors", isActive ? "text-cyan-400" : "text-slate-400 group-hover:text-slate-200")} />
+                <Icon className={cn("w-4 h-4 transition-colors", isActive ? theme.icon : "text-slate-400 group-hover:text-slate-200")} />
                 <span>{item.name}</span>
               </div>
               {item.badge && (
@@ -109,12 +140,13 @@ export function Sidebar() {
                 </span>
               )}
               {isActive && (
-                <ChevronRight className="w-4 h-4 text-cyan-400 animate-pulse" />
+                <ChevronRight className={cn("w-4 h-4 animate-pulse", theme.icon)} />
               )}
             </Link>
           );
         })}
       </nav>
+
 
       {/* Compliance / Safe Mode Footer Card */}
       <div className="p-4 m-3 rounded-lg bg-slate-900/60 border border-cyan-500/20 text-xs">

@@ -14,22 +14,90 @@ body {
   overflow-x: hidden;
 }
 
-/* Cyber Matrix Background Grid & Hex Overlay */
-.bg-grid-pattern {
-  background-size: 36px 36px;
+/* -------------------------------------------------------------
+ * PAGE COLOR THEME IDENTITIES & AMBIENT MESH GRADIENTS
+ * ------------------------------------------------------------- */
+
+/* 1. Dashboard Theme: Dark Black/Navy with Red & Cyan Accents */
+.theme-dashboard {
+  background-color: #030612;
   background-image: 
-    linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0, 242, 254, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 15%, rgba(244, 63, 94, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(15, 23, 42, 0.9) 0%, transparent 80%),
+    linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 63, 94, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 }
 
-.bg-cyber-radial {
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(6, 182, 212, 0.18) 0%, transparent 80%),
-    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(244, 63, 94, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 10% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+/* 2. File Analysis Theme: Dark Theme with Blue/Cyan Scanning Animations */
+.theme-analyzer {
+  background-color: #030914;
+  background-image: 
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6, 182, 212, 0.18) 0%, transparent 75%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 70%),
+    linear-gradient(to right, rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
 }
 
-/* Security Scanline Layer */
+/* 3. Suspicious Findings Theme: Dark Amber/Yellow Warning Highlights */
+.theme-findings {
+  background-color: #07070a;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(245, 158, 11, 0.16) 0%, transparent 75%),
+    radial-gradient(ellipse 60% 40% at 90% 90%, rgba(234, 179, 8, 0.08) 0%, transparent 70%),
+    linear-gradient(to right, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* 4. Reports Theme: Dark Blue / Purple Professional Theme */
+.theme-report {
+  background-color: #060718;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 30% -10%, rgba(168, 85, 247, 0.15) 0%, transparent 75%),
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(99, 102, 241, 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 90%, rgba(6, 182, 212, 0.08) 0%, transparent 75%),
+    linear-gradient(to right, rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* 5. Scan History Theme: Dark Slate / Blue Theme */
+.theme-results {
+  background-color: #050b18;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56, 189, 248, 0.14) 0%, transparent 75%),
+    radial-gradient(ellipse 60% 40% at 10% 70%, rgba(30, 41, 59, 0.8) 0%, transparent 70%),
+    linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* 6. Settings Theme: Dark Neutral Slate Theme with Cyan Accents */
+.theme-settings {
+  background-color: #05050a;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(6, 182, 212, 0.12) 0%, transparent 75%),
+    radial-gradient(ellipse 50% 50% at 90% 90%, rgba(30, 41, 59, 0.6) 0%, transparent 70%),
+    linear-gradient(to right, rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* 7. Interactive Demo Testing Lab Theme: Cyber Emerald / Cyan */
+.theme-demo {
+  background-color: #030914;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(16, 185, 129, 0.14) 0%, transparent 75%),
+    radial-gradient(ellipse 70% 50% at 85% 15%, rgba(6, 182, 212, 0.15) 0%, transparent 70%),
+    linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* Security Scanline Overlay */
 .cyber-scanlines {
   background: linear-gradient(
     to bottom,
@@ -39,6 +107,43 @@ body {
     rgba(6, 182, 212, 0.03)
   );
   background-size: 100% 4px;
+}
+
+/* Custom Scanning Line Animation for File Dropzone */
+.scanline-animated {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #00f2fe, #38bdf8, transparent);
+  box-shadow: 0 0 15px #00f2fe, 0 0 30px #00f2fe;
+  animation: scanLineAnim 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes scanLineAnim {
+  0% { top: 0%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 98%; opacity: 0; }
+}
+
+/* Pulsing Radar Target Overlay */
+.radar-sweep {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: conic-gradient(from 0deg at 50% 50%, rgba(6, 182, 212, 0.15) 0deg, transparent 60deg, transparent 360deg);
+  animation: radarSweepAnim 4s linear infinite;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+@keyframes radarSweepAnim {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Glassmorphism Cyber Panels */
@@ -69,7 +174,7 @@ body {
 }
 
 .cyber-glow-rose {
-  box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
 }
 
 .cyber-glow-amber {
@@ -78,6 +183,10 @@ body {
 
 .cyber-glow-emerald {
   box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+.cyber-glow-purple {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
 }
 
 /* Custom Cyber Scrollbar */
@@ -97,3 +206,4 @@ body {
   background: #06b6d4;
   box-shadow: 0 0 10px #06b6d4;
 }
+

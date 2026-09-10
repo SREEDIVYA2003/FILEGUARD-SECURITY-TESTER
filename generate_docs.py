@@ -468,17 +468,32 @@ def create_document():
     doc.add_page_break()
 
     # -------------------------------------------------------------
-    # PART 6: USER INTERFACE AND DESIGN
+    # PART 6: USER INTERFACE AND DESIGN SYSTEM
     # -------------------------------------------------------------
     add_h1("PART 6 — USER INTERFACE & DESIGN SYSTEM")
 
-    add_h2("8. Design System Specification")
-    doc.add_paragraph("• Color Palette: Dark Cyber / Obsidian theme using Tailwind Slate (#0F172A), Cyan (#06B6D4), Emerald (#10B981), Amber (#F59E0B), and Rose (#F43F5E).")
-    doc.add_paragraph("• Typography: Modern font stack utilizing Inter, Roboto, and monospace fonts (JetBrains Mono / Courier) for code snippets, hashes, and hex dumps.")
-    doc.add_paragraph("• Buttons: Styled cyber buttons with smooth hover gradients, glowing focus rings, and icon indicators.")
-    doc.add_paragraph("• Cards & Glassmorphism: Semi-transparent backdrop-blur cards with 1px border highlights (border-slate-800) and cyan shadow accents.")
+    add_h2("8. Design System Specification & Page Color Identities")
+    doc.add_paragraph(
+        "FILEGUARD Security Tester implements a multi-color cybersecurity dark design system where each route features a dedicated color identity tailored to its specific analytical purpose, combined with custom glassmorphism and subtle scanning animations."
+    )
+    doc.add_paragraph("• 📊 Dashboard Console (/): Dark Black/Navy (#030612) with Crimson Red (#F43F5E) and Electric Cyan (#00F2FE) glowing accents, dual radial mesh gradients, and threat cards.")
+    doc.add_paragraph("• 📁 File Security Analyzer (/analyzer): Dark Cyan/Blue (#030914) featuring a live radar target sweep overlay, top-to-bottom animated scanning line (scanline-animated), and cyber dropzone reticle.")
+    doc.add_paragraph("• ⚠️ Suspicious Findings Database (/findings): Dark Amber/Yellow (#07070A) with Gold (#F59E0B) warning highlights, pulsing danger indicators, and amber severity cards.")
+    doc.add_paragraph("• 📜 Scan Results Audit Inventory (/results): Dark Slate/Blue (#050B18) with Sky Blue (#38BDF8) table row highlights, verdict badges, and filter bars.")
+    doc.add_paragraph("• 🔍 VirusTotal Detailed Report (/results/[id]): Dark Blue/Purple (#060718) professional theme with Cyber Purple (#A855F7) & Indigo (#6366F1) headers, 72-vendor grid, and multi-site report panels.")
+    doc.add_paragraph("• ⚙️ Security Policy & Settings (/settings): Dark Neutral Slate (#05050A) with crisp Cyan (#06B6D4) toggle switches, border indicators, and policy inputs.")
+    doc.add_paragraph("• 🧪 Interactive Demo Laboratory (/demo): Dark Cyber Laboratory (#030914) with Emerald Green (#10B981) and Cyan sample badges.")
+
+    add_h3("8.1 Animated Custom Cyber Reticle Cursor")
+    doc.add_paragraph(
+        "The application integrates a custom dual-layer animated cyber reticle cursor (components/ui/cyber-cursor.tsx) designed for high-precision targeting. Key cursor components include:"
+    )
+    doc.add_paragraph("1. Precision Center Dot: 8px cyan glowing dot (#06B6D4) that shrinks to 6px on click events.")
+    doc.add_paragraph("2. Trailing Outer Reticle Ring: Smooth 32px animated ring with 4 reticle crosshairs that expands to 44px with a bright cyan/sky-blue glow (#38BDF8) upon hovering interactive buttons, dropzones, or threat cards.")
+    doc.add_paragraph("3. Dynamic State Reaction: Native cursor hidden on desktop pointer devices to maintain full cyber aesthetic immersion.")
 
     add_h2("9. Responsive Design Matrix")
+
     resp_table = doc.add_table(rows=4, cols=5)
     resp_table.alignment = WD_TABLE_ALIGNMENT.CENTER
     resp_headers = ["Viewport Class", "Resolution", "Layout Behavior", "Navigation", "Observed Result"]
